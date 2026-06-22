@@ -81,10 +81,16 @@ document.getElementById("leadTable").insertAdjacentHTML("beforeend",
 `<tr><td>${nama}</td><td>${waGabungan}</td><td>${prodi}</td></tr>`);
 
 try{
+const form = new URLSearchParams();
+
+form.append("nama", nama);
+form.append("wa", waGabungan);
+form.append("prodi", prodi);
+
 await fetch(WEBAPP_URL,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({nama:nama,wa:waGabungan,prodi:prodi})
+    method:"POST",
+    mode:"no-cors",
+    body:form
 });
 }catch(e){console.error(e);}
 
