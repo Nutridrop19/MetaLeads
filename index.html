@@ -50,7 +50,8 @@ const nomorTersimpan=new Set();
 async function prosesLead(){
 const raw=document.getElementById("rawData").value.trim();
 if(!raw){alert("Paste data dulu");return;}
-const blocks=raw.split("Pilih Prodi yang kamu minati");
+const blocks =
+raw.split(/Pilih Prodi.*?yang kamu minati/i);
 
 for(const block of blocks){
 if(!block.trim()) continue;
